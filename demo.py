@@ -14,3 +14,4 @@ data = {
 html = requests.post(url, data=data, headers=head)
 soup = BeautifulSoup(html.text, "html.parser")
 xy = soup.find(id="XY")["value"]
+print xy
