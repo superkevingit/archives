@@ -1,6 +1,5 @@
 # encoding: utf-8
 from flask import Flask
-from flask.ext.script import Manager
 import requests
 from bs4 import BeautifulSoup
 import json
@@ -8,7 +7,6 @@ import json
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '\xa1b\xcb\xb5\x9f\xb3N\x1b\xf7\xe9kC\x7f_\xa2\xf2k\x04 \xc2n0(\x93'
-manager = Manager(app)
 head = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.118 Safari/537.36',
         'Referer': 'http://daglyfw.ecjtu.jx.cn:81/by/'}
 url = 'http://daglyfw.ecjtu.jx.cn:81/by/servlet/Search'
@@ -17,7 +15,7 @@ hire_infos = ['JYTXBM', 'DAJSDZ', 'PQDWSZD']
 
 
 @app.route('/<student_id>')
-def app(student_id):
+def show(student_id):
     data = {
         'snumber': student_id,
     }
@@ -50,4 +48,4 @@ def app(student_id):
 
 
 if __name__ == '__main__':
-    manager.run()
+    app.run()
