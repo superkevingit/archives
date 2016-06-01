@@ -10,8 +10,8 @@ app.config['SECRET_KEY'] = '\xa1b\xcb\xb5\x9f\xb3N\x1b\xf7\xe9kC\x7f_\xa2\xf2k\x
 head = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.118 Safari/537.36',
         'Referer': 'http://daglyfw.ecjtu.jx.cn:81/by/'}
 url = 'http://daglyfw.ecjtu.jx.cn:81/by/servlet/Search'
-infos = ['XM', 'SFZH', 'XY', 'ZYMC', 'STUDENTCODE', 'BJ']
-hire_infos = ['JYTXBM', 'DAJSDZ', 'PQDWSZD']
+infos = ['XM', 'SFZH', 'XY', 'STUDENTCODE', 'DALCBZ', 'DALCYY', 'JYTXBM']
+hire_infos = ['DAJSDZ', 'PQDWSZD', 'DAJSLXR']
 
 
 @app.route('/<student_id>')
@@ -36,12 +36,13 @@ def show(student_id):
             u'姓名': details[0],
             u'身份证号': details[1],
             u'学院': details[2],
-            u'专业名称': details[3],
-            u'学号': details[4],
-            u'班级': details[5],
+            u'学号': details[3],
+            u'留档标志': details[4],
+            u'留档原因': details[5],
             u'EMS单号': details[6],
             u'邮寄地址': details[7],
-            u'接受单位名称': details[8]
+            u'接受单位名称': details[8],
+            u'接受单位联系人及电话': details[9]
         }
         back_dict = {'result': True, 'details': details_dict}
         return json.dumps(back_dict)
